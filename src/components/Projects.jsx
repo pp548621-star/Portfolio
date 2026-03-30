@@ -1,21 +1,25 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiStar, FiX } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiStar, FiX, FiYoutube } from 'react-icons/fi';
 import { projects } from '../data/portfolioData';
 
 const ALL = 'All';
 const allTechs = [ALL, ...new Set(projects.flatMap(p => p.tech))];
 
-function ProjectCard({ project, i }) {
+function ProjectCard({ project }) {
   const [hovered, setHovered] = useState(false);
 
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.4, delay: i * 0.08 }}
+      transition={{ 
+        layout: { duration: 0.4, type: 'spring', stiffness: 200, damping: 25 },
+        opacity: { duration: 0.2 },
+        scale: { duration: 0.2 }
+      }}
       className="card group cursor-default"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -31,7 +35,7 @@ function ProjectCard({ project, i }) {
 
         {/* Featured badge */}
         {project.featured && (
-          <div className="absolute top-3 left-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-400 text-amber-900 text-xs font-bold">
+          <div className="absolute top-3 left-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-400 text-amber-900 text-xs font-bold shadow-lg">
             <FiStar size={10} /> Featured
           </div>
         )}
@@ -43,21 +47,34 @@ function ProjectCard({ project, i }) {
           transition={{ duration: 0.2 }}
           className="absolute bottom-3 right-3 flex gap-2"
         >
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
-            className="w-9 h-9 rounded-lg bg-white/90 flex items-center justify-center text-gray-800 hover:bg-white transition-colors shadow-lg"
-          >
-            <FiGithub size={16} />
-          </a>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="View Code"
+              className="w-9 h-9 rounded-lg bg-white/90 flex items-center justify-center text-gray-800 hover:bg-white transition-colors shadow-lg"
+            >
+              <FiGithub size={16} />
+            </a>
+          )}
+          {project.youtube && (
+            <a
+              href={project.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Watch Demo"
+              className="w-9 h-9 rounded-lg bg-red-500 flex items-center justify-center text-white hover:bg-red-600 transition-colors shadow-lg"
+            >
+              <FiYoutube size={16} />
+            </a>
+          )}
           {project.live && (
             <a
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={e => e.stopPropagation()}
+              title="Live Demo"
               className="w-9 h-9 rounded-lg bg-primary-500 flex items-center justify-center text-white hover:bg-primary-600 transition-colors shadow-lg"
             >
               <FiExternalLink size={16} />
@@ -130,39 +147,51 @@ export default function Projects() {
         </motion.div>
 
         {/* Filter chips */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-10 overflow-hidden">
           {allTechs.slice(0, 10).map(tech => (
             <motion.button
               key={tech}
+              layout
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
+              transition={{ layout: { type: 'spring', stiffness: 250, damping: 25 } }}
               onClick={() => { setFilter(tech); setShowAll(false); }}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-300 flex items-center gap-2 ${
                 filter === tech
                   ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30'
                   : 'bg-gray-100 dark:bg-dark-200 text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400'
               }`}
             >
               {tech}
-              {filter === tech && tech !== ALL && (
-                <span className="ml-2 opacity-70" onClick={(e) => { e.stopPropagation(); setFilter(ALL); }}>
-                  <FiX size={10} className="inline" />
-                </span>
-              )}
+              <AnimatePresence>
+                {filter === tech && tech !== ALL && (
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0, width: 0 }}
+                    animate={{ opacity: 1, scale: 1, width: 'auto' }}
+                    exit={{ opacity: 0, scale: 0, width: 0 }}
+                    className="flex-shrink-0"
+                    onClick={(e) => { e.stopPropagation(); setFilter(ALL); }}
+                  >
+                    <FiX size={12} />
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </motion.button>
           ))}
         </div>
 
         {/* Grid */}
-        <AnimatePresence mode="popLayout">
-          <motion.div layout className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-10">
-            <AnimatePresence>
-              {displayed.map((project, i) => (
-                <ProjectCard key={project.id} project={project} i={i} />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-        </AnimatePresence>
+        <motion.div 
+          layout
+          transition={{ duration: 0.5, type: 'spring', stiffness: 200, damping: 25 }}
+          className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-10 overflow-hidden min-h-[400px]"
+        >
+          <AnimatePresence mode="popLayout">
+            {displayed.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
         {/* Show More */}
         {filtered.length > 6 && (

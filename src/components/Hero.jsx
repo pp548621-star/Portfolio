@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiMapPin } from 'react-icons/fi';
+import { SiLeetcode } from 'react-icons/si';
 import { personalInfo } from '../data/portfolioData';
 
 function FloatingOrb({ color, size, left, top, delay = 0 }) {
@@ -181,6 +182,7 @@ export default function Hero() {
               {[
                 { Icon: FiGithub, href: personalInfo.github, label: 'GitHub' },
                 { Icon: FiLinkedin, href: personalInfo.linkedin, label: 'LinkedIn' },
+                { Icon: SiLeetcode, href: personalInfo.leetcode, label: 'LeetCode' },
                 { Icon: FiMail, href: `mailto:${personalInfo.email}`, label: 'Email' },
               ].map(({ Icon, href, label }) => (
                 <motion.a
@@ -206,7 +208,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: Avatar + Decorative */}
+          {/* Right: Image + Decorative */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -225,46 +227,18 @@ export default function Hero() {
                   borderRadius: '50%',
                 }}
               />
-              {/* Avatar container */}
+              {/* Image container */}
               <div
                 className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-dark-300"
                 style={{ boxShadow: '0 0 0 4px rgba(99,102,241,0.3), 0 0 60px rgba(99,102,241,0.2)' }}
               >
                 <img
-                  src="/avatar.png"
-                  alt="Developer Avatar"
+                  src="/image.png"
+                  alt="Developer Image"
                   className="w-full h-full object-cover"
                 />
               </div>
 
-              {/* Floating stat cards */}
-              <motion.div
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -left-8 top-8 glass rounded-2xl p-3 shadow-lg"
-              >
-                <div className="text-xs text-gray-500 dark:text-gray-400 mb-0.5">Experience</div>
-                <div className="font-bold text-gray-900 dark:text-white text-sm">2+ Years</div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [5, -5, 5] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                className="absolute -right-8 bottom-12 glass rounded-2xl p-3 shadow-lg"
-              >
-                <div className="text-xs text-gray-500 dark:text-gray-400 mb-0.5">Projects</div>
-                <div className="font-bold text-gray-900 dark:text-white text-sm">15+ Built</div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [-4, 4, -4] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-                className="absolute -bottom-4 left-1/2 -translate-x-1/2 glass rounded-2xl px-4 py-2 shadow-lg"
-              >
-                <div className="font-bold text-gray-900 dark:text-white text-sm text-center">
-                  ☕ Currently coding...
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>

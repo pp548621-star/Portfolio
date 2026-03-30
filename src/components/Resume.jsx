@@ -78,7 +78,7 @@ export default function Resume() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 href={personalInfo.resume}
-                download="AlexDev_Resume.pdf"
+                download="Dev_Resume.pdf"
                 className="btn-primary flex items-center gap-2"
               >
                 <FiDownload size={16} /> Download PDF

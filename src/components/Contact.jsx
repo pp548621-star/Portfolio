@@ -1,12 +1,14 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiGithub, FiLinkedin, FiTwitter, FiSend, FiCheckCircle, FiMapPin } from 'react-icons/fi';
+import { SiLeetcode } from 'react-icons/si';
 import { personalInfo } from '../data/portfolioData';
+import emailjs from '@emailjs/browser';
 
 const socials = [
   { icon: FiGithub,   label: 'GitHub',   href: personalInfo.github,   color: 'hover:bg-gray-800 hover:border-gray-800' },
   { icon: FiLinkedin, label: 'LinkedIn', href: personalInfo.linkedin, color: 'hover:bg-blue-600  hover:border-blue-600' },
-  { icon: FiTwitter,  label: 'Twitter',  href: personalInfo.twitter,  color: 'hover:bg-sky-500   hover:border-sky-500' },
+  { icon: SiLeetcode, label: 'LeetCode', href: personalInfo.leetcode, color: 'hover:bg-[#FFA116] hover:border-[#FFA116]' },
   { icon: FiMail,     label: 'Email',    href: `mailto:${personalInfo.email}`, color: 'hover:bg-primary-500 hover:border-primary-500' },
 ];
 
@@ -20,11 +22,28 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
-    // Simulate form submission
-    await new Promise(r => setTimeout(r, 1500));
-    setStatus('sent');
-    setForm({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setStatus('idle'), 4000);
+
+    // Your live EmailJS IDs
+    const SERVICE_ID = 'service_w730dnl'; 
+    const TEMPLATE_ID = 'template_3rmq28k'; 
+    const PUBLIC_KEY = 'Ufd6-fPWmKO3CUMee'; 
+
+    try {
+      await emailjs.sendForm(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        formRef.current,
+        PUBLIC_KEY
+      );
+      
+      setStatus('sent');
+      setForm({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
 
   return (
@@ -147,6 +166,26 @@ export default function Contact() {
                   <p className="text-gray-500 dark:text-gray-400">
                     Thanks for reaching out! I'll get back to you within 24 hours.
                   </p>
+                </motion.div>
+              ) : status === 'error' ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center justify-center h-full py-12 text-center"
+                >
+                  <div className="w-20 h-20 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center mb-4">
+                    <FiSend size={40} className="text-rose-500" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Something went wrong</h3>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    Failed to send message. Please try again or email me directly at {personalInfo.email}
+                  </p>
+                  <button 
+                    onClick={() => setStatus('idle')}
+                    className="mt-6 text-primary-500 font-semibold hover:underline"
+                  >
+                    Try Again
+                  </button>
                 </motion.div>
               ) : (
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">

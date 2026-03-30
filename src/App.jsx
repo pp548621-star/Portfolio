@@ -4,12 +4,9 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import Playground from './components/Playground';
-import Experience from './components/Experience';
 import Education from './components/Education';
 import Resume from './components/Resume';
-import GitHub from './components/GitHub';
-import Blog from './components/Blog';
+import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -24,12 +21,9 @@ export default function App() {
           <About />
           <Skills />
           <Projects />
-          <Playground />
-          <Experience />
+          <Certificates />
           <Education />
           <Resume />
-          <GitHub />
-          <Blog />
           <Contact />
         </main>
         <Footer />

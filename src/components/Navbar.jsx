@@ -8,10 +8,8 @@ const navLinks = [
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
-  { href: '#playground', label: 'Playground' },
-  { href: '#experience', label: 'Experience' },
+  { href: '#certificates', label: 'Certificates' },
   { href: '#education', label: 'Education' },
-  { href: '#blog', label: 'Blog' },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -77,7 +75,7 @@ export default function Navbar() {
               <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-white">
                 <FiCode size={16} />
               </div>
-              <span className="gradient-text font-bold">Alex Dev</span>
+              <span className="gradient-text font-bold">Pavan Patel</span>
             </a>
 
             {/* Desktop Links */}

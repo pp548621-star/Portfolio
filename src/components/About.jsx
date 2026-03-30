@@ -55,8 +55,8 @@ export default function About() {
           </h2>
         </motion.div>
 
-        <div ref={sectionRef} className="grid lg:grid-cols-2 gap-16 items-center mb-16">
-          {/* Left: Bio */}
+        <div ref={sectionRef} className="max-w-4xl mx-auto mb-16">
+          {/* Bio */}
           <div>
             {/* Big quote */}
             <motion.blockquote
@@ -112,7 +112,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5 }}
-              className="grid grid-cols-3 gap-4"
+              className="grid grid-cols-1 md:grid-cols-3 gap-4"
             >
               {highlights.map(({ icon: Icon, title, desc }) => (
                 <div
@@ -125,50 +125,6 @@ export default function About() {
                 </div>
               ))}
             </motion.div>
-          </div>
-
-          {/* Right: Career Journey Timeline */}
-          <div>
-            <motion.h3
-              initial={{ opacity: 0, x: 30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-xl font-bold text-gray-900 dark:text-white mb-8"
-            >
-              My Journey
-            </motion.h3>
-
-            <div className="space-y-0">
-              {[
-                { year: '2019', event: 'Wrote my first "Hello World" in C++', emoji: '🌱' },
-                { year: '2021', event: 'Started B.Tech at NIT Surathkal', emoji: '🎓' },
-                { year: '2022', event: 'Built first React app — a to-do list (everyone starts here!)', emoji: '⚛️' },
-                { year: '2023', event: 'Won 2nd place at CodeLabs Hackathon with a 4-person team', emoji: '🏆' },
-                { year: '2024', event: 'Completed internship at TechCorp Solutions', emoji: '💼' },
-                { year: '2025', event: 'Graduating and ready to take on the world!', emoji: '🚀' },
-              ].map((item, i) => (
-                <motion.div
-                  key={item.year}
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="flex gap-4 relative pb-6 last:pb-0"
-                >
-                  <div className="flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center text-lg flex-shrink-0 shadow-lg shadow-primary-500/30">
-                      {item.emoji}
-                    </div>
-                    {i < 5 && (
-                      <div className="w-0.5 flex-1 bg-gradient-to-b from-primary-500/50 to-transparent mt-2" />
-                    )}
-                  </div>
-                  <div className="pt-2">
-                    <span className="text-xs font-mono text-primary-500 font-semibold">{item.year}</span>
-                    <p className="text-gray-700 dark:text-gray-300 text-sm mt-0.5">{item.event}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </div>
 
