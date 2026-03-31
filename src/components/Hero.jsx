@@ -234,7 +234,7 @@ export default function Hero() {
               >
                 <img
                   src="/image.png"
-                  alt="Developer Image"
+                  alt={`${personalInfo.name} - Full Stack Developer`}
                   className="w-full h-full object-cover"
                 />
               </div>
