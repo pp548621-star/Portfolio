@@ -96,16 +96,15 @@ export const projects = [
   },
   {
     id: 4,
-    title: "GeoTag Photo Logger",
-    description: "A React Native mobile app that lets users capture geotagged photos with location metadata, stored in the cloud.",
+    title: "Tic-Tac-Toe Game",
+    description: "A classic Tic-Tac-Toe game built with React that features a clean user interface and game logic.",
     image: "/proj1.png",
-    tech: ["React Native", "Expo", "Node.js", "MongoDB", "JWT"],
-    features: ["GPS photo tagging", "JWT authentication", "Cloud storage", "Pull-to-refresh feed"],
-    github: "https://github.com/pp548621-star/geotag",
-    live: null,
+    tech: ["HTML", "CSS", "NextJs"],
+    features: ["Responsive design", "Winning condition checking", "Reset game functionality"],
+    github: "https://github.com/pp548621-star/tic-tac-toe",
+    live: "https://tic-tac-toe-eight-wheat-25.vercel.app/",
     youtube: "https://youtube.com/watch?v=demo4",
-    category: ["React Native", "Node.js", "MongoDB"],
-    featured: false,
+    category: ["HTML", "CSS", "NextJs"]
   }
 ];
 
