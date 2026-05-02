@@ -244,20 +244,22 @@ export default function Hero() {
         </div>
 
         {/* Scroll indicator */}
-        <motion.div
+        <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          onClick={() => handleScroll('#about')}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20 group"
+          aria-label="Scroll to about"
         >
-          <span className="text-xs text-gray-400 font-mono">scroll to explore</span>
+          <span className="text-xs text-gray-400 font-mono group-hover:text-primary-500 transition-colors">scroll to explore</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            <FiArrowDown className="text-primary-500" size={20} />
+            <FiArrowDown className="text-primary-500 group-hover:text-primary-600 transition-colors" size={20} />
           </motion.div>
-        </motion.div>
+        </motion.button>
       </div>
     </section>
   );

@@ -20,7 +20,7 @@ export const personalInfo = {
   // twitter: "https://twitter.com/alexdev",
   location: "Gujarat, India",
   available: true,
-  resume: "/resume.pdf",
+  resume: "https://drive.google.com/file/d/19ekj28tnphMMT8CE8T8-TUbi6awzLIGv/view?usp=sharing",
 };
 
 // ─── SKILLS ────────────────────────────────────────────────────
@@ -60,39 +60,39 @@ export const projects = [
   {
     id: 1,
     title: "ShopSphere – E-Commerce Platform",
-    description: "A full-featured e-commerce platform with real-time inventory, secure payments, and an admin dashboard for store analytics.",
+    description: "A simple social media-style web application that allows users to share posts, interact with content, and manage connections in a clean web interface.",
     image: "/proj1.png",
-    tech: ["HTML", "CSS"],
-    features: ["Secure Stripe payments", "Real-time cart sync", "Admin analytics", "Responsive design"],
+    tech: ["HTML", "CSS", "JavaScript"],
+    features: ["Responsive design"],
     github: "https://github.com/pp548621-star/first-project",
-    live: "https://shopsphere.demo",
+    live: "https://first-project-three-umber.vercel.app/",
     youtube: "https://youtube.com/watch?v=demo1",
-    category: ["HTML", "CSS"],
+    category: ["HTML", "CSS", "JavaScript"],
     // featured: true,
   },
   {
     id: 2,
-    title: "MedBook – Hospital Management System",
-    description: "A Hospital Management System with patient management, appointment scheduling, and medical records.",
+    title: "ExpenseBook – Expense Management",
+    description: "A simple web-based expense tracker application that allows users to add, view, and manage income and expenses with real-time balance updates.",
     image: "/proj2.png",
-    tech: ["Java","CSS"],
-    features: ["Patient management", "Appointment scheduling", "Medical records", "Billing and payments"],
+    tech: ["JavaScript ", "HTML", "CSS", "React.js"],
+    features: ["Add income and expenses", "Real-time balance calculation", "Transaction history tracking", "Monthly summary reports"],
     github: "https://github.com/pp548621-star/MedBook",
-    live: "https://taskflow.demo",
+    live: "https://expense-one-gray.vercel.app/",
     youtube: "https://youtube.com/watch?v=demo2",
-    category: ["Java", "CSS"]
+    category: ["JavaScript ", "HTML", "CSS", "React.js"]
   },
   {
     id: 3,
-    title: "ChatSphere – Real-Time Chat",
-    description: "A real-time messaging application with WebSocket support, group chats, file sharing, and end-to-end encryption.",
+    title: "BillMate – Bill Management",
+    description: "A web-based billing and invoice management application that allows users to create bills, manage customer data, and track payments efficiently.",
     image: "/proj3.png",
-    tech: ["React", "Socket.io", "Node.js", "MongoDB", "JWT"],
-    features: ["Real-time messaging", "Group chats", "File sharing", "E2E encryption"],
-    github: "https://github.com/pp548621-star/chatsphere",
-    live: "https://chatsphere.demo",
+    tech: ["HTML", "CSS", "JavaScript", "React.js"],
+    features: ["Create and generate invoices", "Manage customer details", "Track payment status"],
+    github: "https://github.com/pp548621-star/BillMate",
+    live: "https://bill-mate-self.vercel.app/",
     youtube: "https://youtube.com/watch?v=demo3",
-    category: ["React", "Node.js", "WebSocket"]
+    category: ["HTML", "CSS", "JavaScript", "React.js"]
   },
   {
     id: 4,
@@ -106,33 +106,7 @@ export const projects = [
     youtube: "https://youtube.com/watch?v=demo4",
     category: ["React Native", "Node.js", "MongoDB"],
     featured: false,
-  },
-  {
-    id: 5,
-    title: "DevBlog – Technical Articles",
-    description: "A developer-focused blogging platform with Markdown support, syntax highlighting, and an SEO-optimized architecture.",
-    image: "/proj2.png",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL"],
-    features: ["Markdown editor", "Syntax highlighting", "SEO optimized", "Comment system"],
-    github: "https://github.com/pp548621-star/devblog",
-    live: "https://devblog.demo",
-    youtube: "https://youtube.com/watch?v=demo5",
-    category: ["Next.js", "TypeScript", "PostgreSQL"],
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "StockVision – Algo Trader",
-    description: "A stock market simulator using historical data, technical indicators, and backtesting for algorithmic trading strategies.",
-    image: "/proj3.png",
-    tech: ["Python", "React", "D3.js", "Flask", "PostgreSQL"],
-    features: ["Backtesting engine", "Technical indicators", "Interactive charts", "Portfolio simulation"],
-    github: "https://github.com/pp548621-star/stockvision",
-    live: null,
-    youtube: "https://youtube.com/watch?v=demo6",
-    category: ["Python", "React", "D3.js"],
-    featured: false,
-  },
+  }
 ];
 
 // ─── EDUCATION ─────────────────────────────────────────────────

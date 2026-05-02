@@ -4,9 +4,9 @@ import { FiCode, FiTarget, FiZap, FiMapPin, FiCalendar } from 'react-icons/fi';
 import { personalInfo } from '../data/portfolioData';
 
 const stats = [
-  { label: 'Projects Built', value: '15+', icon: '🚀' },
-  { label: 'GitHub Repos', value: '42', icon: '📦' },
-  { label: 'Tech Stack', value: '20+', icon: '🛠️' },
+  { label: 'Projects Built', value: '10', icon: '🚀' },
+  { label: 'GitHub Repos', value: '14', icon: '📦' },
+  { label: 'Tech Stack', value: '10', icon: '🛠️' },
   { label: 'Coffee Cups', value: '∞', icon: '☕' },
 ];
 

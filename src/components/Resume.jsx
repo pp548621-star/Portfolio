@@ -1,8 +1,21 @@
 import { motion } from 'framer-motion';
-import { FiDownload, FiEye, FiFileText } from 'react-icons/fi';
+import { FiFileText, FiDownload } from 'react-icons/fi';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Resume() {
+  // Helper to convert Drive link to direct download link
+  const getDownloadLink = (url) => {
+    if (!url) return '#';
+    // Handle File link
+    const fileMatch = url.match(/\/d\/(.+?)(?:\/|$)/);
+    if (fileMatch) return `https://drive.google.com/uc?export=download&id=${fileMatch[1]}`;
+    // Handle Folder link
+    const folderMatch = url.match(/\/folders\/(.+?)(?:\?|$)/);
+    if (folderMatch) return `https://drive.google.com/u/0/uc?id=${folderMatch[1]}&export=download`;
+    
+    return url;
+  };
+
   return (
     <section id="resume" className="py-24 bg-white dark:bg-dark-300">
       <div className="section-container">
@@ -78,20 +91,19 @@ export default function Resume() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 href={personalInfo.resume}
-                download="Dev_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-primary flex items-center gap-2"
               >
-                <FiDownload size={16} /> Download PDF
+                <FiFileText size={16} /> View Resume
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                href={personalInfo.resume}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={getDownloadLink(personalInfo.resume)}
                 className="btn-outline flex items-center gap-2"
               >
-                <FiEye size={16} /> Preview
+                <FiDownload size={16} /> Download
               </motion.a>
             </div>
           </div>

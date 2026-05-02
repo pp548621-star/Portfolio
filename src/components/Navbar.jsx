@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiSun, FiMoon, FiMenu, FiX, FiCode } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
+import { personalInfo } from '../data/portfolioData';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -124,8 +125,9 @@ export default function Navbar() {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/resume.pdf"
-                download
+                href={personalInfo.resume}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hidden sm:flex btn-primary text-sm py-2 px-4"
               >
                 Resume
@@ -177,8 +179,13 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              <a href="/resume.pdf" download className="btn-primary text-center mt-2">
-                Download Resume
+              <a 
+                href={personalInfo.resume} 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-center mt-2"
+              >
+                View Resume
               </a>
             </div>
           </motion.div>

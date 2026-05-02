@@ -7,8 +7,8 @@ const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Playground', href: '#playground' },
-  { label: 'Experience', href: '#experience' },
+  { label: 'Certificates', href: '#certificates' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -17,7 +17,7 @@ const socials = [
   { icon: FiLinkedin, href: personalInfo.linkedin, label: 'LinkedIn' },
   { icon: FiTwitter,  href: personalInfo.twitter,  label: 'Twitter' },
   { icon: FiMail,     href: `mailto:${personalInfo.email}`,    label: 'Email' },
-];
+].filter(s => s.href && !s.href.includes('undefined'));
 
 export default function Footer() {
   const scrollTo = (href) => {
@@ -37,10 +37,11 @@ export default function Footer() {
               <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-white">
                 <FiCode size={16} />
               </div>
-              <span className="font-bold text-xl gradient-text">Alex Dev</span>
+              <span className="font-bold text-xl gradient-text">{personalInfo.name}</span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed mb-5 max-w-xs">
-              Full Stack Developer passionate about building products that matter. 
+              {personalInfo.tagline || 'Full Stack Developer passionate about building products that matter.'}
+              <br />
               Open to new opportunities.
             </p>
             {/* Social icons */}
