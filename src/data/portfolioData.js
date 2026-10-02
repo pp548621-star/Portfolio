@@ -20,7 +20,7 @@ export const personalInfo = {
   // twitter: "https://twitter.com/alexdev",
   location: "Gujarat, India",
   available: true,
-  resume: "https://drive.google.com/file/d/1nLTd7YcE7iFyC2DTIiw-tB7KsPBHjC0G/view?usp=sharing",
+  resume: "https://drive.google.com/file/d/1v7xdvVMvo8kpknFIvVYXjhb7E3YpZsCW/view?usp=sharing",
 };
 
 // ─── SKILLS ────────────────────────────────────────────────────
